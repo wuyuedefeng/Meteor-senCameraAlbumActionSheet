@@ -18,6 +18,7 @@ SenCameraAlbumActionSheet = {
                 MeteorCamera.getPicture(cameraOptions,function(error,one_image_base64){
                     if(error){
                         //alert(error.message);
+                        cancelCallback(error.message);
                     }else{
                         var more_image_base64 = [one_image_base64];
                         selCallback(more_image_base64);

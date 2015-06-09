@@ -8,11 +8,12 @@ meteor add wuyuedefeng:sen-camera-album
 
 ##使用方法
 ```JavaScript
-SenCameraAlbumActionSheet.showCamera(function(selImages){
+SenCameraAlbumActionSheet.showCamera(function(selImages){//图片的base64：selImages[0]
 
 });
 
-SenCameraAlbumActionSheet.showCameraAlbum(function(selImages){
+SenCameraAlbumActionSheet.showCameraAlbum_one(function(selImages){//图片的base64：selImages[0]
 
 });
+
 ```

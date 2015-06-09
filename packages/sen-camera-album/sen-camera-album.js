@@ -28,7 +28,7 @@ SenCameraAlbumActionSheet = {
             }
         });
     },
-    showCameraAlbum:function(selCallback,cancelCallback){
+    showCameraAlbum_one:function(selCallback,cancelCallback){
         IonActionSheet.show({
             titleText: '选择方式',
             buttons: [
@@ -49,6 +49,7 @@ SenCameraAlbumActionSheet = {
                     MeteorCamera.getPicture(cameraOptions,function(error,one_image_base64){
                         if(error){
                             //alert(error.message);
+                            cancelCallback(error.message);
                         }else{
                             var more_image_base64 = [one_image_base64];
                             selCallback(more_image_base64);
@@ -56,44 +57,31 @@ SenCameraAlbumActionSheet = {
                     });
                 }else{
                     var more_image_base64 = [];
-                    window.imagePicker.getPictures(
-                        function(results) {
-                            for (var i = 0; i < results.length; i++) {
-                                console.log('Image URI: ' + results[i]);
-                                loadImage(this.files,function(one_image_base64){
-                                    more_image_base64.push(one_image_base64);
-                                });
-                            }
-                            selCallback(more_image_base64);
-                        }, function (error) {
-                            console.log('Error: ' + error);
-                            cancelCallback(error);
-                        }, {
-                            maximumImagesCount: 10,
-                            width: 800
-                        }
-                    );
-                    function loadImage(src,callBack){
-                        // 过滤掉 非 image 类型的文件
-                        if(!src.type.match(/image.*/)){
-                            if(window.console){
-                                console.log("选择的文件类型不是图片: ", src.type);
-                            } else {
-                                window.confirm("只能选择图片文件");
-                            }
-                            return;
-                        }
-                        // 创建 FileReader 对象 并调用 render 函数来完成渲染.
-                        var reader = new FileReader();
-                        // 绑定load事件自动回调函数
-                        reader.onload = function(e){
-                            //读取数据源
-                            imageData = e.target.result;
-                            callBack(imageData);
-                        };
-                        // 读取文件内容
-                        reader.readAsDataURL(src);
-                    };
+                    var pictureSource;   // picture source
+                    var destinationType; // sets the format of returned value
+
+                    // Wait for device API libraries to load
+                    //
+                    document.addEventListener("deviceready",onDeviceReady,false);
+
+                    // device APIs are available
+                    //
+                    function onDeviceReady() {
+                        pictureSource=navigator.camera.PictureSourceType;
+                        destinationType=navigator.camera.DestinationType;
+                    }
+                    function onSuccess(imageData) {
+                        var more_image_base64 = [imageData];
+                        selCallback(imageData)
+                    }
+                    navigator.camera.getPicture(onSuccess, onFail, { quality: 2,
+                        destinationType: destinationType.DATA_URL,
+                        sourceType: pictureSource.PHOTOLIBRARY });
+
+                    function onFail(message) {
+                        console.log('Failed because: ' + message);
+                        cancelCallback(message);
+                    }
                 }
                 return true;
             }

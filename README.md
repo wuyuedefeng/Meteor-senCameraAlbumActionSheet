@@ -1,4 +1,4 @@
-## senCameraAlbumActionSheet
+## SenCameraAlbumActionSheet
 
 # 依赖ionic环境 需自己添加
 
@@ -8,11 +8,11 @@ meteor add wuyuedefeng:sen-camera-album
 
 ##使用方法
 ```JavaScript
-senCameraAlbumActionSheet.showCamera(function(selImages){
+SenCameraAlbumActionSheet.showCamera(function(selImages){
 
 });
 
-senCameraAlbumActionSheet.showCameraAlbum(function(selImages){
+SenCameraAlbumActionSheet.showCameraAlbum(function(selImages){
 
 });
 ```

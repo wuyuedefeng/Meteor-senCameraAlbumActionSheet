@@ -1,6 +1,6 @@
 Package.describe({
     name: 'wuyuedefeng:sen-camera-album',
-    version: '0.0.3',
+    version: '0.0.4',
     // Brief, one-line summary of the package.
     summary: 'camera album get images base cordova',
     // URL to the Git repository containing the source code for this package.
@@ -12,7 +12,7 @@ Package.describe({
 
 Cordova.depends({
     // http://plugins.cordova.io/#/package/com.romainstrock.cordova.background-geolocation
-    'cordova:com.synconset.imagepicker': '1.0.6'
+    'com.synconset.imagepicker': '1.0.6'
 });
 
 Package.onUse(function(api) {

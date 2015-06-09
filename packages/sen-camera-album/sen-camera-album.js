@@ -1,5 +1,5 @@
 // Write your package code here!
-senCameraAlbumActionSheet = {
+SenCameraAlbumActionSheet = {
     showCamera:function(selCallback,cancelCallback){
         IonActionSheet.show({
             titleText: '选择方式',

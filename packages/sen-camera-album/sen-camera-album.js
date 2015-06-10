@@ -71,7 +71,7 @@ SenCameraAlbumActionSheet = {
                     function onSuccess(imageData) {
                         selCallback(imageData)
                     }
-                    navigator.camera.getPicture(onSuccess, onFail, { quality: 2,
+                    navigator.camera.getPicture(onSuccess, onFail, { quality: 10,
                         destinationType: destinationType.DATA_URL,
                         sourceType: pictureSource.PHOTOLIBRARY });
 

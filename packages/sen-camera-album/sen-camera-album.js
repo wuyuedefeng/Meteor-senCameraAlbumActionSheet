@@ -85,7 +85,7 @@ SenCameraAlbumActionSheet = {
         });
     },
     showCameraAlbum_more:function(selCallback,cancelCallback){
-        senCameraAlbumActionSheet.show({
+        IonActionSheet.show({
             titleText: '选择方式',
             buttons: [
                 { text: '拍照' },

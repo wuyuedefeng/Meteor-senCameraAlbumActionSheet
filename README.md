@@ -4,7 +4,9 @@
 
 # 依赖包 如无法自动使用，请尝试执行以下命令。
 meteor add mdg:camera
+
 meteor add cordova:org.apache.cordova.camera@0.3.6
+
 meteor add cordova:com.synconset.imagepicker@1.0.6
 
 

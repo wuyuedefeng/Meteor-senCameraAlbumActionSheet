@@ -58,27 +58,29 @@ SenCameraAlbumActionSheet = {
                     var pictureSource;   // picture source
                     var destinationType; // sets the format of returned value
 
+                    function onDeviceReady() {
+                        pictureSource=navigator.camera.PictureSourceType;
+                        destinationType=navigator.camera.DestinationType;
+                    }
                     // Wait for device API libraries to load
                     //
                     document.addEventListener("deviceready",onDeviceReady,false);
 
                     // device APIs are available
                     //
-                    function onDeviceReady() {
-                        pictureSource=navigator.camera.PictureSourceType;
-                        destinationType=navigator.camera.DestinationType;
-                    }
+
                     function onSuccess(imageData) {
                         selCallback(imageData)
                     }
-                    navigator.camera.getPicture(onSuccess, onFail, { quality: 10,
-                        destinationType: destinationType.DATA_URL,
-                        sourceType: pictureSource.PHOTOLIBRARY });
 
                     function onFail(message) {
                         console.log('Failed because: ' + message);
                         cancelCallback(message);
                     }
+
+                    navigator.camera.getPicture(onSuccess, onFail, { quality: 10,
+                        destinationType: destinationType.DATA_URL,
+                        sourceType: pictureSource.PHOTOLIBRARY });
                 }
                 return true;
             }

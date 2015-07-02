@@ -58,24 +58,18 @@ SenCameraAlbumActionSheet = {
                     var pictureSource;   // picture source
                     var destinationType; // sets the format of returned value
 
-                    navigator.camera.cleanup(onSuccess, onFail);
-                    function onSuccess() {
-                        console.log("Camera cleanup success.")
-                    }
-                    function onFail(message) {
-                        console.log('Failed because: ' + message);
-                    }
-
                     function onDeviceReady() {
                         pictureSource=navigator.camera.PictureSourceType;
                         destinationType=navigator.camera.DestinationType;
                         function onSuccess(imageData) {
                             selCallback("data:image/jpeg;base64," + imageData);
+                            navigator.camera.cleanup();
                         }
 
                         function onFail(message) {
                             console.log('Failed because: ' + message);
                             cancelCallback(message);
+                            navigator.camera.cleanup();
                         }
 
                         navigator.camera.getPicture(onSuccess, onFail, {
@@ -108,31 +102,21 @@ SenCameraAlbumActionSheet = {
                 console.log('Cancelled!');
             },
             buttonClicked: function(index) {
-                // Wait for device API libraries to load
-                //
-                document.addEventListener("deviceready",onDeviceReady,false);
-
                 var pictureSource;   // picture source
                 var destinationType; // sets the format of returned value
-
-                navigator.camera.cleanup(onSuccess, onFail);
-                function onSuccess() {
-                    console.log("Camera cleanup success.")
-                }
-                function onFail(message) {
-                    alert('Failed because: ' + message);
-                }
 
                 function onDeviceReady() {
                     pictureSource=navigator.camera.PictureSourceType;
                     destinationType=navigator.camera.DestinationType;
                     function onSuccess(imageData) {
                         selCallback("data:image/jpeg;base64," + imageData);
+                        navigator.camera.cleanup();
                     }
 
                     function onFail(message) {
                         console.log('Failed because: ' + message);
                         cancelCallback(message);
+                        navigator.camera.cleanup();
                     }
 
                     navigator.camera.getPicture(onSuccess, onFail, {

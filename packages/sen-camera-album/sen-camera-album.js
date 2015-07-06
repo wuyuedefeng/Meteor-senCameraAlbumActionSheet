@@ -18,7 +18,9 @@ SenCameraAlbumActionSheet = {
                 MeteorCamera.getPicture(cameraOptions,function(error,one_image_base64){
                     if(error){
                         //alert(error.message);
-                        cancelCallback(error.message);
+                        if(cancelCallback){
+                            cancelCallback(error.message);
+                        }
                     }else{
                         selCallback(one_image_base64);
                     }
@@ -49,7 +51,9 @@ SenCameraAlbumActionSheet = {
                     MeteorCamera.getPicture(cameraOptions,function(error,one_image_base64){
                         if(error){
                             //alert(error.message);
-                            cancelCallback(error.message);
+                            if(cancelCallback){
+                                cancelCallback(error.message);
+                            }
                         }else{
                             selCallback(one_image_base64);
                         }
@@ -68,7 +72,9 @@ SenCameraAlbumActionSheet = {
 
                         function onFail(message) {
                             console.log('Failed because: ' + message);
-                            cancelCallback(message);
+                            if(cancelCallback){
+                                cancelCallback(message);
+                            }
                             navigator.camera.cleanup();
                         }
 
@@ -115,7 +121,9 @@ SenCameraAlbumActionSheet = {
 
                     function onFail(message) {
                         console.log('Failed because: ' + message);
-                        cancelCallback(message);
+                        if(cancelCallback){
+                            cancelCallback(message);
+                        }
                         navigator.camera.cleanup();
                     }
 
@@ -159,7 +167,9 @@ SenCameraAlbumActionSheet = {
                     MeteorCamera.getPicture(cameraOptions,function(error,one_image_base64){
                         if(error){
                             //alert(error.message);
-                            cancelCallback(error.message);
+                            if(cancelCallback){
+                                cancelCallback(error.message);
+                            }
                         }else{
                             selCallback(one_image_base64,'base64');
                         }
@@ -171,7 +181,9 @@ SenCameraAlbumActionSheet = {
                             selCallback(uris, 'uris');
                         }, function (error) {
                             console.log('Error: ' + error);
-                            cancelCallback(error.message);
+                            if(cancelCallback){
+                                cancelCallback(error.message);
+                            }
                         }, {
                             maximumImagesCount: 10,
                             width: 800

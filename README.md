@@ -34,3 +34,49 @@ SenCameraAlbumActionSheet.showCameraAlbum_more(function(result,identifier)
 });
 
 ```
+
+***
+
+### 获取多张图片的base64方法，图片获取（Session.get('cameraIonActionSheet.selPics');） 注意自己控制对数据的清空
+###### tip：Meteor的Session具有随动性，所以无需考虑啥时返回（对相册选取多张封装到了clent目录中的senMutipleActionSheet中，自动将图片加到Session中）
+
+```
+//显示actionSheet
+
+showCameraActionSheet();
+function showCameraActionSheet(){
+    cameraIonActionSheet.show({
+        titleText: '选择方式',
+        buttons: [
+            { text: '拍照' }
+        ],
+        //destructiveText: 'Delete',
+        cancelText: '取消',
+        cancel: function() {
+            console.log('Cancelled!');
+        },
+        buttonClicked: function(index) {
+            if (index === 0) {
+                var cameraOptions = {
+                    quality:10
+                };
+                MeteorCamera.getPicture(cameraOptions,function(error,one_image_base64){
+                    if(error){
+                        //alert(error.message);
+                        cancelCallback(error.message);
+                    }else{
+                        var pics = Session.get('cameraIonActionSheet.selPics');
+                        pics.push(one_image_base64);
+                        Session.set('cameraIonActionSheet.selPics',pics);
+                    }
+                });
+            }
+            return true;
+        }
+        //destructiveButtonClicked: function() {
+        //    console.log('Destructive Action!');
+        //    return true;
+        //}
+    });
+}
+```

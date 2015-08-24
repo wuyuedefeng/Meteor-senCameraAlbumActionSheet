@@ -37,8 +37,8 @@ SenCameraAlbumActionSheet.showCameraAlbum_more(function(result,identifier)
 
 ***
 
-### 获取多张图片的base64方法，图片获取（Session.get('cameraIonActionSheet.selPics');） 注意自己控制对数据的清空
-###### tip：Meteor的Session具有随动性，所以无需考虑啥时返回（对相册选取多张封装到了clent目录中的senMutipleActionSheet中，自动将图片加到Session中）
+##### 获取多张图片的base64方法，图片获取（Session.get('cameraIonActionSheet.selPics');） 注意自己控制对数据的清空
+###### tip：Meteor的Session具有随动性，所以无需考虑啥时返回（对相册选取多张封装到了client目录中的senMutipleActionSheet中，自动将图片加到Session中）
 
 ```
 //显示actionSheet

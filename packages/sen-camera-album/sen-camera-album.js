@@ -1,5 +1,23 @@
 // Write your package code here!
 SenCameraAlbumActionSheet = {
+    base64_from_uri: function(imageUri, callback){
+        var c=document.createElement('canvas');
+        var ctx=c.getContext("2d");
+        var img=new Image();
+        img.onload = function(){
+            c.width=this.width;
+            c.height=this.height;
+            ctx.drawImage(img, 0,0);
+        };
+        img.src=imageUri;
+        var dataURL = c.toDataURL("image/jpeg");
+
+        if (callback && dataURL){
+            callback(dataURL);
+            return true;
+        }
+        return false;
+    },
     showCamera:function(selCallback,cancelCallback){
         IonActionSheet.show({
             titleText: '选择方式',

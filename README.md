@@ -34,6 +34,14 @@ SenCameraAlbumActionSheet.showCameraAlbum_more(function(result,identifier)
 });
 
 ```
+######if you want trans uri  to base64 please call:
+
+```
+SenCameraAlbumActionSheet.base64_from_uri(imageUri, function(one_image_base64){//one_image_base64 为 imageUri转换后的数据
+
+});
+
+```
 
 ***
 

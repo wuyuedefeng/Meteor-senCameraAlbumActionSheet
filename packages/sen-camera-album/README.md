@@ -2,12 +2,6 @@
 
 # 依赖ionic环境 需自己添加
 
-# 依赖包 移动设备编译时，会自动添加，无需手动添加
-meteor add mdg:camera
-meteor add cordova:org.apache.cordova.camera@0.3.6
-meteor add cordova:com.synconset.imagepicker@1.0.6
-
-
 ```meteor
 meteor add wuyuedefeng:sen-camera-album
 ```
@@ -43,3 +37,11 @@ SenCameraAlbumActionSheet.base64_from_uri(imageUri, function(one_image_base64){/
 });
 
 ```
+
+
+
+
+### 提示： 依赖包 移动设备编译时（会自动添加，无需手动添加）
+meteor add mdg:camera
+meteor add cordova:org.apache.cordova.camera@0.3.6
+meteor add cordova:com.synconset.imagepicker@1.0.6

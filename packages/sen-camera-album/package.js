@@ -1,6 +1,6 @@
 Package.describe({
     name: 'wuyuedefeng:sen-camera-album',
-    version: '0.1.7',
+    version: '0.1.8',
     // Brief, one-line summary of the package.
     summary: 'camera album get images base cordova',
     // URL to the Git repository containing the source code for this package.

@@ -97,7 +97,7 @@ SenCameraAlbumActionSheet = {
                         }
 
                         navigator.camera.getPicture(onSuccess, onFail, {
-                            quality: 80,
+                            quality: 70,
                             destinationType: destinationType.DATA_URL,
                             sourceType: pictureSource.PHOTOLIBRARY });
 
@@ -146,7 +146,7 @@ SenCameraAlbumActionSheet = {
                     }
 
                     navigator.camera.getPicture(onSuccess, onFail, {
-                        quality: 5,
+                        quality: 20,
                         allowEdit : true,
                         destinationType: destinationType.DATA_URL,
                         sourceType: index == 1 ? pictureSource.PHOTOLIBRARY : pictureSource.CAMERA });
